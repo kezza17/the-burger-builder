@@ -1,0 +1,76 @@
+Planning a React App
+
+Thre major steps to follow:
+
+1.  Component Tree / Component Structure
+
+  - Split up idea of app into components
+
+2.  Application State (Data)
+
+  - Based on data which will be transferred in the app
+
+3.  Component vs Containers
+
+  - Which components should be stateless?
+  - Which components have to be stateful?
+    = functional components using useState hook
+    = class based components using this.state.property
+
+------------------------------------------------
+
+
+1.  Component Tree / Component Structure
+
+Burger Builder
+
+ ______________________________________________________
+| LOGO |                            | BUILDER | ORDERS |
+|______|____________________________|_________|________|
+|                _______________________               |
+|               /                       \              |
+|              |_________________________|             |
+|             _____________________________            |
+|             _____________________________            |
+|             _____________________________            |
+|               _________________________              |
+|              |                         |             |
+|              |_________________________|             |
+|                                                      |
+|      __________________________________________      |
+|     |           MEAT    + -                    |     |
+|     |           SALAD   + -                    |     |
+|     |           CHEESE  + -                    |     |
+|     |__________________________________________|     |
+|                                                      |
+|                    | CHECKOUT |                      |
+|                                                      |
+|______________________________________________________|
+
+
+                                 APP
+                                  |
+                                LAYOUT
+     _____________________________|_________________________             
+    /                     /                \                \
+Toolbar               SideDrawer         Backdrop     {props.children}
+   |                      |                                  |
+   |\____DrawerToggle     |                           Different Pages:
+   |\________Logo________/|   ------(Stateful)----->  Burger Builder
+    \__Navigation Items__/    |               _______________|________________
+                              |              /               |                \
+                              |       BuildControls        Burger             Modal
+                              |    _________|          ______|                 |
+                              |   | |                 | |                {props.children}
+                              |   | |__BuildControl   | |__Ingredients
+                              |   | |__BuildControl   | |__Ingredients
+                              |   | |__BuildControl   | |__Ingredients
+                              |   |         :                 :
+                              |   |_____OrderButton
+                              |
+2.  Application State (Data)  | 
+                              |
+State:  -----------------------
+- Ingredients { meat: 1, cheese: 2}
+- purchased: true
+-totalPrice: 12.55
